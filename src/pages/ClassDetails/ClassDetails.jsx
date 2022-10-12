@@ -12,7 +12,8 @@ const ClassDetails = () => {
       console.log(classDetails)
     }
     fetchDetails()
-  })
+  },[])
+
   return (
     <>
       <div>
