@@ -10,14 +10,28 @@ const ClassDetails = () => {
     const fetchDetails = async () => {
       const classDetails = await getDetails(location.state.classTitle.url)
       console.log(classDetails)
+      setClassDetails(classDetails)
     }
     fetchDetails()
-  },[])
+  }, [location.state.classTitle.url])
 
   return (
     <>
       <div>
-        <h3>Class Details</h3>
+        {classDetails.name ? 
+        <>
+          <img src="http://theoldreader.com/kittens/320/240/" alt=""/>
+          <h2>{classDetails.name}</h2>
+          <div>Hit die: d{classDetails.hit_die}</div>
+          <h3>Proficiencies:</h3>
+          {classDetails.proficiencies.map(proficiency => 
+            <div key={proficiency.index}>{proficiency.name}</div>
+          )}
+        </>
+        :
+        <>
+          <p>Loading class details...</p>
+        </>}
       </div>
     </>
   )

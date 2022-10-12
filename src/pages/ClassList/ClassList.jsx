@@ -9,6 +9,7 @@ const ClassList = () => {
     const fetchClassData = async () => {
       const classData = await getClassList()
       setClasses(classData.results)
+      console.log(classData)
     }
     fetchClassData()
   }, [])
