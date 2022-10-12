@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { getClassList } from "../../services/api-calls"
+import { Link } from "react-router-dom"
 
 const ClassList = () => {
   const [classes, setClasses] = useState([])
@@ -10,7 +11,7 @@ const ClassList = () => {
       setClasses(classData.results)
     }
     fetchClassData()
-  })
+  }, [])
 
 
   return (
@@ -22,15 +23,21 @@ const ClassList = () => {
 						* This is where we map over our results, representing 
 						* each with a div containing an image and a name 
 					*/}
-          {classes.map(classTitle => 
-            <div className="class-div" key={classTitle.name}>
-              <img 
-								style={{ width: "100px", height: "100px" }}
-								src={`/images/${classTitle.name}.svg`} 
-								alt="class-logo"
-							/>
-              {classTitle.name}
-            </div>
+          {classes.map(classTitle =>
+            <Link
+              key={classTitle.index} 
+              to='/class' 
+              state={{ classTitle }} 
+            >
+              <div className="class-div">
+                <img 
+                  style={{ width: "100px", height: "100px" }}
+                  src={`/images/${classTitle.name}.svg`} 
+                  alt="class-logo"
+                />
+                {classTitle.name}
+              </div>
+            </Link>
           )}
         </div>
       </div>
