@@ -1,5 +1,6 @@
 import { useState } from "react"
 import SearchForm from "../../components/SearchForm/SearchForm"
+import SpellCard from "../../components/SpellCard/SpellCard"
 import { spellSearch } from "../../services/api-calls"
 
 const SpellSearch = () => {
@@ -15,13 +16,13 @@ const SpellSearch = () => {
       <h3>Spells</h3>
       <SearchForm handleSpellSearch={handleSpellSearch} />
       {spells.length ?
-        <>
+        <ul>
           {spells.map(spell =>
-            <div key={spell.index}>
-              {spell.name}
-            </div>
+          <li key={spell.index}>
+            <SpellCard spell={spell} />
+          </li>
           )}
-        </>
+        </ul>
         :
         <h3>Please search for a spell!</h3>
       }
