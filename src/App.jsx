@@ -7,6 +7,7 @@ import MonsterList from './pages/MonsterList/MonsterList'
 import MonsterDetails from './pages/MonsterDetails/MonsterDetails'
 import SpellSearch from './pages/SpellSearch/SpellSearch'
 import SpellDetails from './pages/SpellDetails/SpellDetails'
+import Shop from './pages/Shop/Shop'
 
 function App() {
   return (
@@ -32,6 +33,10 @@ function App() {
         <Route 
           path='/spell-search'
           element={<SpellSearch />}
+        />
+        <Route 
+          path='/shop'
+          element={<Shop />}
         />
         <Route 
           path='/spell/:spellName'
