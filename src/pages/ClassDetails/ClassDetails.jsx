@@ -8,9 +8,8 @@ const ClassDetails = () => {
 
   useEffect(() => {
     const fetchDetails = async () => {
-      const classDetails = await getDetails(location.state.classTitle.url)
-      console.log(classDetails)
-      setClassDetails(classDetails)
+      const classData = await getDetails(location.state.classTitle.url)
+      setClassDetails(classData)
     }
     fetchDetails()
   }, [location.state.classTitle.url])
