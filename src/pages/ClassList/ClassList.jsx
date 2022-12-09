@@ -1,20 +1,7 @@
-import { useState, useEffect } from "react"
-import { getClassList } from "../../services/api-calls"
-import { Link } from "react-router-dom"
+import { useState } from "react";
 
 const ClassList = () => {
-  const [classes, setClasses] = useState([])
-
-  useEffect(()=> {
-    const fetchClassData = async () => {
-      const classData = await getClassList()
-      setClasses(classData.results)
-      console.log(classData)
-    }
-    fetchClassData()
-  }, [])
-
-
+  const [classes, setClasses] = useState(['Paladin', 'Bard', 'Rogue'])
   return (
     <>
       <div>
@@ -24,26 +11,20 @@ const ClassList = () => {
 						* This is where we map over our results, representing 
 						* each with a div containing an image and a name 
 					*/}
-          {classes.map(classTitle =>
-            <Link
-              key={classTitle.index} 
-              to='/class' 
-              state={{ classTitle }} 
-            >
-              <div className="class-div">
-                <img 
-                  style={{ width: "100px", height: "100px" }}
-                  src={`/images/${classTitle.name}.svg`} 
-                  alt="class-logo"
-                />
-                {classTitle.name}
-              </div>
-            </Link>
+          {classes.map(classTitle => 
+            <div className="class-div" key={classTitle}>
+              <img 
+								style={{ width: "100px", height: "100px" }}
+								src={`/images/${classTitle}.svg`} 
+								alt="class-logo"
+							/>
+              {classTitle}
+            </div>
           )}
         </div>
       </div>
     </>
-  )
+  );
 }
-
-export default ClassList
+ 
+export default ClassList;
