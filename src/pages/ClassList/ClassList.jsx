@@ -3,16 +3,16 @@ import { getClassList } from '../../services/api-calls'
 // Don't forget this import!
 import { Link } from 'react-router-dom'
 
-const ClassList = () => {
-  const [classes, setClasses] = useState([])
+const ClassList = () => { // ClassList is a functional component
+  const [classes, setClasses] = useState([]) // set initial state to empty array
 
-  useEffect(() => {
-    const fetchClassList = async () => {
-      const classData = await getClassList()
-      setClasses(classData.results)
+  useEffect(() => {                     // useEffect is a hook that runs after the component renders
+    const fetchClassList = async () => {    // async function to fetch class list
+      const classData = await getClassList()    // await the response from the API call
+      setClasses(classData.results)        // set the state to the results of the API call
     }
-    fetchClassList()
-  }, [])
+    fetchClassList()            // call the async function
+  }, [])                  // empty array as second argument to useEffect means it only runs once
 
   return (
     <>
