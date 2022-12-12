@@ -6,8 +6,8 @@ import ClassDetails from './pages/ClassDetails/ClassDetails';
 import MonsterList from './pages/MonsterList/MonsterList';
 
 
-function App() {
-  return (
+function App() { // App is a functional component
+  return ( // return JSX
     <>
       <NavBar />
       <Routes>
